@@ -2,6 +2,8 @@
 
 This repo serves as a prototype design for interacting with Instill AI services, including Artifact, Model, and Pipeline. The SDK offers two initialization methods for flexibility in configuration and usage.
 
+**Please note that this repository acts as a wrapper around the current Instill Python SDK, which uses the `instill` namespace. To avoid naming conflicts with the original SDK, this wrapper uses the `inst` namespace instead. Wherever you see `inst` in the examples and tests, please note that `instill` will actually be used in the real SDK implementation!**
+
 ## Repository Structure
 
 This repository contains the following modules:
@@ -31,10 +33,10 @@ The SDK supports dual initialization:
 #### `Artifact`
 
 ```python
-import instill
+import inst
 
 # Initialize Artifact service directly
-artifact = instill.Artifact(api_token="YOUR_INSTILL_API_TOKEN")
+artifact = inst.Artifact(api_token="YOUR_INSTILL_API_TOKEN")
 
 # Create a catalog
 catalog = artifact.create_catalog(
@@ -50,16 +52,16 @@ artifact.close()
 #### `Model`
 
 ```python
-import instill
+import inst
 
 # Initialize Model service directly
-model = instill.Model(api_token="YOUR_INSTILL_API_TOKEN")
+model = inst.Model(api_token="YOUR_inst_API_TOKEN")
 
 task_inputs = [
-    instill.protogen.model.model.v1alpha.model_pb2.TaskInput(
+    inst.protogen.model.model.v1alpha.model_pb2.TaskInput(
         classification={"imageUrl": "https://artifacts.instill.tech/imgs/dog.jpg"}
     ),
-    instill.protogen.model.model.v1alpha.model_pb2.TaskInput(
+    inst.protogen.model.model.v1alpha.model_pb2.TaskInput(
         classification={"imageUrl": "https://artifacts.instill.tech/imgs/bear.jpg"}
     ),
 ]
@@ -78,10 +80,10 @@ model.close()
 #### `Pipeline`
 
 ```python
-import instill
+import inst
 
 # Initialize Pipeline service directly
-pipeline = instill.Pipeline(api_token="YOUR_INSTILL_API_TOKEN")
+pipeline = inst.Pipeline(api_token="YOUR_INSTILL_API_TOKEN")
 
 # Define inputs
 inputs = [{"prompt": "hello world"}]
@@ -99,10 +101,10 @@ pipeline.close()
 ### 2. Centralized Initialization via `Core`
 
 ```python
-import instill
+import inst
 
 # Initialize Core with global configuration
-core = instill.Core(api_token="YOUR_INSTILL_API_TOKEN")
+core = inst.Core(api_token="YOUR_INSTILL_API_TOKEN")
 
 # Access and use Artifact service
 artifact = core.artifact
@@ -117,10 +119,10 @@ model = core.model
 response = model.trigger_model(
     model_id="your-model-id",
     task_inputs=[
-        instill.protogen.model.model.v1alpha.model_pb2.TaskInput(
+        inst.protogen.model.model.v1alpha.model_pb2.TaskInput(
             classification={"imageUrl": "https://artifacts.instill.tech/imgs/dog.jpg"}
         ),
-        instill.protogen.model.model.v1alpha.model_pb2.TaskInput(
+        inst.protogen.model.model.v1alpha.model_pb2.TaskInput(
             classification={"imageUrl": "https://artifacts.instill.tech/imgs/bear.jpg"}
         ),
     ],
