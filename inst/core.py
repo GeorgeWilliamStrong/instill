@@ -40,5 +40,7 @@ class Core:
             self._pipeline = Pipeline(client=self.client)
         return self._pipeline
 
+    # Additional methods relating to instill-core can be added here
+
     def close(self):
         self.client.close()
