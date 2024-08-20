@@ -46,6 +46,24 @@ catalog = artifact.create_catalog(
 )
 ```
 
+#### `Pipeline`
+
+```python
+import inst
+
+# Initialize Pipeline service directly
+pipeline = inst.Pipeline(api_token="YOUR_INSTILL_API_TOKEN")
+
+# Define inputs
+inputs = [{"prompt": "hello world"}]
+
+# Trigger the pipeline
+response = pipeline.run_pipeline(
+    pipeline_id="your-pipeline-id",
+    inputs=inputs
+)
+```
+
 #### `Model`
 
 ```python
@@ -71,24 +89,6 @@ response = model.trigger_model(
 )
 ```
 
-#### `Pipeline`
-
-```python
-import inst
-
-# Initialize Pipeline service directly
-pipeline = inst.Pipeline(api_token="YOUR_INSTILL_API_TOKEN")
-
-# Define inputs
-inputs = [{"prompt": "hello world"}]
-
-# Trigger the pipeline
-response = pipeline.run_pipeline(
-    pipeline_id="your-pipeline-id",
-    inputs=inputs
-)
-```
-
 ### 2. Centralized Initialization via `Core`
 
 ```python
@@ -105,6 +105,13 @@ catalog = artifact.create_catalog(
     description="A brief description of your catalog"
 )
 
+# Access and use Pipeline service
+pipeline = core.pipeline
+pipeline_response = pipeline.run_pipeline(
+    pipeline_id="your-pipeline-id",
+    inputs=[{"prompt": "hello world"}]
+)
+
 # Access and use Model service
 model = core.model
 response = model.trigger_model(
@@ -118,12 +125,5 @@ response = model.trigger_model(
         ),
     ],
     version_tag="your-version-tag"
-)
-
-# Access and use Pipeline service
-pipeline = core.pipeline
-pipeline_response = pipeline.run_pipeline(
-    pipeline_id="your-pipeline-id",
-    inputs=[{"prompt": "hello world"}]
 )
 ```
