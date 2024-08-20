@@ -44,9 +44,6 @@ catalog = artifact.create_catalog(
     name="Your Catalog Name",
     description="A brief description of your catalog"
 )
-
-# Close the Artifact client
-artifact.close()
 ```
 
 #### `Model`
@@ -72,9 +69,6 @@ response = model.trigger_model(
     task_inputs=task_inputs,
     version_tag="your-version-tag"
 )
-
-# Close the Model client
-model.close()
 ```
 
 #### `Pipeline`
@@ -93,9 +87,6 @@ response = pipeline.run_pipeline(
     pipeline_id="your-pipeline-id",
     inputs=inputs
 )
-
-# Close the Pipeline client
-pipeline.close()
 ```
 
 ### 2. Centralized Initialization via `Core`
@@ -135,7 +126,4 @@ pipeline_response = pipeline.run_pipeline(
     pipeline_id="your-pipeline-id",
     inputs=[{"prompt": "hello world"}]
 )
-
-# Close the Core client
-core.close()
 ```
