@@ -1,8 +1,8 @@
-import instill
+import instill2
 import os
 
 # Initialize Artifact service directly
-artifact = instill.Artifact(api_token=os.environ["INSTILL_API_TOKEN"])
+artifact = instill2.Artifact(api_token=os.environ["INSTILL_API_TOKEN"])
 
 # Create a catalog
 catalog = artifact.create_catalog(
