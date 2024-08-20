@@ -2,7 +2,7 @@
 
 This repo serves as a prototype design for interacting with Instill AI services, including Artifact, Model, and Pipeline. The SDK offers two initialization methods for flexibility in configuration and usage.
 
-**Please note that this repository acts as a wrapper around the current Instill Python SDK, which uses the `instill` namespace. To avoid naming conflicts with the original SDK, this wrapper uses the `inst` namespace instead. Wherever you see `inst` in the examples and tests, please note that `instill` will actually be used in the real SDK implementation!**
+> **Important:** This repository acts as a wrapper around the current Instill Python SDK, which uses the `instill` namespace. To avoid naming conflicts with the original SDK, this wrapper uses the `inst` namespace instead. In the examples and tests, `inst` is used; however, the actual SDK implementation will use `instill`.
 
 ## Repository Structure
 
